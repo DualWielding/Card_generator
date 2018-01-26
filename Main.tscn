@@ -1,0 +1,310 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://icons/connector.png" type="Texture" id=2]
+
+[node name="Main" type="PanelContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 300.0
+margin/bottom = 600.0
+script/script = ExtResource( 1 )
+
+[node name="HSeparator" type="HSeparator" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 7.0
+margin/top = 7.0
+margin/right = 293.0
+margin/bottom = 593.0
+
+[node name="Card" type="PanelContainer" parent="HSeparator"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 286.0
+margin/bottom = 287.0
+
+[node name="Background" type="ColorFrame" parent="HSeparator/Card"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 7.0
+margin/top = 7.0
+margin/right = 279.0
+margin/bottom = 280.0
+color = Color( 1, 1, 1, 1 )
+
+[node name="Spell" type="TextureFrame" parent="HSeparator/Card/Background"]
+
+rect/scale = Vector2( 0.3, 0.3 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 60.0
+margin/top = 60.0
+margin/right = 572.0
+margin/bottom = 572.0
+stretch_mode = 0
+
+[node name="Connectors" type="Control" parent="HSeparator/Card/Background"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+
+[node name="Left" type="TextureFrame" parent="HSeparator/Card/Background/Connectors"]
+
+visibility/visible = false
+rect/scale = Vector2( 0.5, 0.5 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 98.0
+margin/right = 150.0
+margin/bottom = 248.0
+texture = ExtResource( 2 )
+stretch_mode = 0
+
+[node name="Orientation" type="ColorFrame" parent="HSeparator/Card/Background/Connectors/Left"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 54.0
+margin/top = 54.0
+margin/right = 94.0
+margin/bottom = 94.0
+color = Color( 1, 1, 1, 1 )
+
+[node name="Top" type="TextureFrame" parent="HSeparator/Card/Background/Connectors"]
+
+visibility/visible = false
+rect/rotation = -90.0
+rect/scale = Vector2( 0.5, 0.5 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 175.0
+margin/top = 0.0
+margin/right = 325.0
+margin/bottom = 150.0
+texture = ExtResource( 2 )
+stretch_mode = 0
+
+[node name="Orientation" type="ColorFrame" parent="HSeparator/Card/Background/Connectors/Top"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 48.0
+margin/top = 54.0
+margin/right = 88.0
+margin/bottom = 94.0
+color = Color( 1, 1, 1, 1 )
+
+[node name="Right" type="TextureFrame" parent="HSeparator/Card/Background/Connectors"]
+
+visibility/visible = false
+rect/rotation = 180.0
+rect/scale = Vector2( 0.5, 0.5 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 271.0
+margin/top = 174.0
+margin/right = 421.0
+margin/bottom = 324.0
+texture = ExtResource( 2 )
+stretch_mode = 0
+
+[node name="Orientation" type="ColorFrame" parent="HSeparator/Card/Background/Connectors/Right"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 54.0
+margin/top = 54.0
+margin/right = 93.0
+margin/bottom = 94.0
+color = Color( 1, 1, 1, 1 )
+
+[node name="Down" type="TextureFrame" parent="HSeparator/Card/Background/Connectors"]
+
+visibility/visible = false
+rect/rotation = 90.0
+rect/scale = Vector2( 0.5, 0.5 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 100.0
+margin/top = 273.0
+margin/right = 250.0
+margin/bottom = 423.0
+texture = ExtResource( 2 )
+stretch_mode = 0
+
+[node name="Orientation" type="ColorFrame" parent="HSeparator/Card/Background/Connectors/Down"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 42.0
+margin/top = 58.0
+margin/right = 80.0
+margin/bottom = 98.0
+color = Color( 1, 1, 1, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSeparator"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 286.0
+margin/bottom = 586.0
+alignment = 2
+
+[node name="ButtonGroup" type="ButtonGroup" parent="HSeparator/VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 120.0
+margin/top = 470.0
+margin/right = 286.0
+margin/bottom = 562.0
+alignment = 0
+
+[node name="CheckBox" type="CheckBox" parent="HSeparator/VBoxContainer/ButtonGroup"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 166.0
+margin/bottom = 23.0
+toggle_mode = true
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Tier 0"
+flat = false
+align = 0
+
+[node name="CheckBox1" type="CheckBox" parent="HSeparator/VBoxContainer/ButtonGroup"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 23.0
+margin/right = 166.0
+margin/bottom = 46.0
+toggle_mode = true
+is_pressed = true
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Tier 1"
+flat = false
+align = 0
+
+[node name="CheckBox2" type="CheckBox" parent="HSeparator/VBoxContainer/ButtonGroup"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 46.0
+margin/right = 166.0
+margin/bottom = 69.0
+toggle_mode = true
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Tier 2"
+flat = false
+align = 0
+
+[node name="CheckBox3" type="CheckBox" parent="HSeparator/VBoxContainer/ButtonGroup"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 69.0
+margin/right = 166.0
+margin/bottom = 92.0
+toggle_mode = true
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Tier 3"
+flat = false
+align = 0
+
+[node name="Generate" type="Button" parent="HSeparator/VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 566.0
+margin/right = 286.0
+margin/bottom = 586.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Générer"
+flat = false
+
+[connection signal="pressed" from="HSeparator/VBoxContainer/ButtonGroup/CheckBox" to="." method="_on_CheckBox_pressed"]
+
+[connection signal="pressed" from="HSeparator/VBoxContainer/ButtonGroup/CheckBox1" to="." method="_on_CheckBox1_pressed"]
+
+[connection signal="pressed" from="HSeparator/VBoxContainer/ButtonGroup/CheckBox2" to="." method="_on_CheckBox2_pressed"]
+
+[connection signal="pressed" from="HSeparator/VBoxContainer/ButtonGroup/CheckBox3" to="." method="_on_CheckBox3_pressed"]
+
+[connection signal="pressed" from="HSeparator/VBoxContainer/Generate" to="." method="_on_Generate_pressed"]
+
+
