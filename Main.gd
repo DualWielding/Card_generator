@@ -12,7 +12,13 @@ func generate_card():
 	var card = card_class.instance()
 	card_container.add_child(card)
 	card.generate(_tier)
-
+	
+	var card_copy = card.duplicate()
+	var container = TextureFrame.new()
+	container.add_child( card_copy )
+	container.set_custom_minimum_size(Vector2(120, 120))
+	card_copy.set_scale( Vector2( 0.4, 0.4 ) )
+	get_node("HSeparator/VBoxContainer/CurrentCards/List").add_child(container)
 
 func set_tier(number):
 	if number >= 0 and number <= 3:
@@ -39,3 +45,9 @@ func _on_CheckBox3_pressed():
 
 func _on_Generate_pressed():
 	generate_card()
+	get_node("HSeparator/VBoxContainer/Labels/Current").set_text(str(get_node("HSeparator/VBoxContainer/CurrentCards/List").get_child_count()))
+
+func _on_Reset_pressed():
+	get_node("HSeparator/VBoxContainer/Labels/Current").set_text("0")
+	for node in get_node("HSeparator/VBoxContainer/CurrentCards/List").get_children():
+		node.queue_free()

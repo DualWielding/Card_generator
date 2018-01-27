@@ -12,6 +12,7 @@ const RED_TABLE		= ["red", "red", "red", "red", "green", "blue"]
 const GREEN_TABLE	= ["green", "green", "green", "green", "red", "blue"]
 const BLUE_TABLE	= ["red", "green", "blue", "blue", "blue", "blue"]
 
+onready var card_bg = get_node("Background")
 onready var card_spell 	= get_node("Spell")
 onready var card_connectors 	= {
 	"Left"	: get_node("Connectors/Left"),
@@ -34,17 +35,25 @@ func generate(tier):
 	_tier = tier
 	_points = POINTS[_tier]
 	
+#	print("Début : ", _points)
 	_generate_spell()
+#	print("Après sort : ", _points)
 	_generate_connections()
+#	print("Après connections : ", _points)
 	_generate_connections_orientation()
+#	print("Après orientations : ", _points)
 	
 	var dice = randi() % 2
 	if dice > 0:
 		_generate_symbols()
+#		print("Après symboles : ", _points)
 		_generate_color()
+#		print("Après couleur : ", _points)
 	else:
 		_generate_color()
+#		print("Après couleur : ", _points)
 		_generate_symbols()
+#		print("Après symboles : ", _points)
 
 func _generate_spell():
 	if _points < 1: return
@@ -106,7 +115,6 @@ func _generate_connections():
 
 func _generate_connections_orientation():
 	if _spell == null: return;
-	if _connectors.size() > 1: _points += 1 # Refund the spell's points
 	
 	var orientations_number = 0
 	var i = 0
@@ -129,6 +137,8 @@ func _generate_connections_orientation():
 			orientation.set_frame_color(COLORS[table[dice]])
 			orientation.show()
 		i += 1
+		
+	if orientations_number > 1: _points += 1 # Refund the spell's points
 
 func _generate_color():
 	if _points < 1: return
@@ -149,7 +159,7 @@ func _generate_color():
 		table = EVEN_TABLE
 	
 	_color = table[dice]
-	set_frame_color(COLORS[_color])
+	card_bg.set_frame_color(COLORS[_color])
 	get_node("Spell").set_modulate(COLORS[_color])
 	
 	_points -= 1
@@ -162,9 +172,9 @@ func _generate_symbols():
 	else:
 		node = get_node("Symbols/Swords")
 	
-	var roll = (randi()%6) + (randi()%6)
+	var roll = ((randi()%6) + 1) + ((randi()%6) + 1)
 	var number
-	if roll < 4:
+	if roll < 5:
 		number = _tier
 	elif roll > 8:
 		number = _tier + 2

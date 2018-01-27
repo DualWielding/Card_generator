@@ -25,7 +25,7 @@ margin/top = 7.0
 margin/right = 293.0
 margin/bottom = 593.0
 
-[node name="CardContainer" type="PanelContainer" parent="HSeparator"]
+[node name="CardContainer" type="Container" parent="HSeparator"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -48,6 +48,73 @@ margin/right = 286.0
 margin/bottom = 586.0
 alignment = 2
 
+[node name="Labels" type="HBoxContainer" parent="HSeparator/VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 424.0
+margin/right = 286.0
+margin/bottom = 438.0
+alignment = 0
+
+[node name="Text" type="Label" parent="HSeparator/VBoxContainer/Labels"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 123.0
+margin/bottom = 14.0
+text = "Nombre de cartes :"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Current" type="Label" parent="HSeparator/VBoxContainer/Labels"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 127.0
+margin/top = 0.0
+margin/right = 135.0
+margin/bottom = 14.0
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="CurrentCards" type="ScrollContainer" parent="HSeparator/VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 442.0
+margin/right = 286.0
+margin/bottom = 442.0
+scroll/horizontal = true
+scroll/vertical = false
+
+[node name="List" type="HBoxContainer" parent="HSeparator/VBoxContainer/CurrentCards"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 0
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+alignment = 0
+
 [node name="ButtonGroup" type="ButtonGroup" parent="HSeparator/VBoxContainer"]
 
 editor/display_folded = true
@@ -56,9 +123,9 @@ focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 470.0
+margin/top = 446.0
 margin/right = 286.0
-margin/bottom = 562.0
+margin/bottom = 538.0
 alignment = 0
 
 [node name="CheckBox" type="CheckBox" parent="HSeparator/VBoxContainer/ButtonGroup"]
@@ -141,13 +208,29 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
+margin/top = 542.0
+margin/right = 286.0
+margin/bottom = 562.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Générer"
+flat = false
+
+[node name="Reset" type="Button" parent="HSeparator/VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
 margin/top = 566.0
 margin/right = 286.0
 margin/bottom = 586.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Générer"
+text = "Réinitialiser"
 flat = false
 
 [connection signal="pressed" from="HSeparator/VBoxContainer/ButtonGroup/CheckBox" to="." method="_on_CheckBox_pressed"]
@@ -159,5 +242,7 @@ flat = false
 [connection signal="pressed" from="HSeparator/VBoxContainer/ButtonGroup/CheckBox3" to="." method="_on_CheckBox3_pressed"]
 
 [connection signal="pressed" from="HSeparator/VBoxContainer/Generate" to="." method="_on_Generate_pressed"]
+
+[connection signal="pressed" from="HSeparator/VBoxContainer/Reset" to="." method="_on_Reset_pressed"]
 
 
