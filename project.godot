@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=3
+
+[application]
+
+run/main_scene="res://Main.tscn"
+icon="res://icon.png"
+main_scene="res://Main.tscn"
+name="Générateur de cartes"
+
+[autoload]
+
+SPELLS="*res://Spells.gd"
+
+[display]
+
+window/size/width=300
+window/size/resizable=false
+window/size/fullscreen=true
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+stretch/aspect="keep"
+stretch/mode="disabled"
+
+[physics_2d]
+
+motion_fix_enabled=true
+
+[rendering]
+
+quality/subsurface_scattering/quality=2
+quality/subsurface_scattering/follow_surface=true

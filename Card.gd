@@ -11,14 +11,15 @@ const EVEN_TABLE	= ["red", "red", "green", "green", "blue", "blue"]
 const RED_TABLE		= ["red", "red", "red", "red", "green", "blue"]
 const GREEN_TABLE	= ["green", "green", "green", "green", "red", "blue"]
 const BLUE_TABLE	= ["red", "green", "blue", "blue", "blue", "blue"]
+const SPELLS_TABLE 	= ["Heal", "Injury", "Draw", "Sight"]
 
 onready var card_bg = get_node("Background")
 onready var card_spell 	= get_node("Spell")
 onready var card_connectors 	= {
-	"Left"	: get_node("Connectors/Left"),
-	"Right"	: get_node("Connectors/Right"),
-	"Top"	: get_node("Connectors/Top"),
-	"Down"	: get_node("Connectors/Down")
+	"Left"	: $Connectors/Left,
+	"Right"	: $Connectors/Right,
+	"Top"	: $Connectors/Top,
+	"Down"	: $Connectors/Down
 }
 
 var _color
@@ -59,15 +60,14 @@ func _generate_spell():
 	if _points < 1: return
 	
 	randomize()
-	var result_table = ["Heal", "Injury", "Draw", "Sight", "Exile"]
-	var dice = (randi() % 8) # Roll the dice
+	var dice = (randi() % (SPELLS.count() * 2)) #1/2 chance to have a spell
 	
-	if dice > 4:
+	if dice > SPELLS.count() - 1:
 		card_spell.set_texture(Texture.new())
 		return false
 	else:
 		_points -= 1
-		_spell = SPELLS.get(result_table[dice])
+		_spell = SPELLS.get(SPELLS_TABLE[dice])
 		card_spell.set_texture(_spell["Image"])
 		return true
 
@@ -86,7 +86,6 @@ func _generate_connections():
 		number_of_connections = _points
 	
 	# Find which connections are selected
-	var dice
 	if number_of_connections == 1:
 		dice = randi() % 4
 		_connectors.append(card_connectors[DIRECTIONS[dice]])
@@ -115,13 +114,12 @@ func _generate_connections():
 
 func _generate_connections_orientation():
 	if _spell == null: return;
-	
-	var orientations_number = 0
 	var i = 0
+	
 	for connector in _connectors:
 		randomize()
-		if i == 0 or randi () % 2 > 0: # 1st is automatic, then 50% chance
-			orientations_number += 1
+		if i == 0 or (_points > 0 and randi () % 9 <= _tier): # First is automatic and the higher the tier, the more likely, with a max of 1/3 chance
+			if i > 0: _points -= 1 # First is free
 			var dice = randi() % 6
 			var table
 			if _spell["Orientation"] == null:
@@ -136,9 +134,8 @@ func _generate_connections_orientation():
 			var orientation = connector.get_node("Orientation")
 			orientation.set_frame_color(COLORS[table[dice]])
 			orientation.show()
-		i += 1
 		
-	if orientations_number > 1: _points += 1 # Refund the spell's points
+		i += 1
 
 func _generate_color():
 	if _points < 1: return
